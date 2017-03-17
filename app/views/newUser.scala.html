@@ -1,0 +1,56 @@
+@(randomUser: RandomUser)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New User</title>
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/datepicker3.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-table.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+
+    </head>
+<body>
+@for(results <- randomUser.getResults){
+
+
+    <div class="form-group">
+        First Name: <input class="form-control" placeholder="First Name" name="firstName" type="firstName" value="@results.getName.getFirst">
+    </div>
+    <div class="form-group">
+        Last Name: <input class="form-control" placeholder="Last Name" name="lastName" type="lastName" value="@results.getName.getLast">
+    </div>
+    <div class="form-group">
+        DOB: <input class="form-control" placeholder="dob" name="dob" type="dob" value="@results.getDob">
+    </div>
+    <div class="form-group">
+        Gender: <input class="form-control" placeholder="gender" name="gender" type="gender" value="@results.getGender">
+    </div>
+    <div class="form-group">
+        Street: <input class="form-control" placeholder="street" name="street" type="street" value="@results.getLocation.getStreet">
+    </div>
+    <div class="form-group">
+        City: <input class="form-control" placeholder="city" name="city" type="city" value="@results.getLocation.getCity">
+    </div>
+    <div class="form-group">
+        State: <input class="form-control" placeholder="state" name="state" type="state" value="@results.getLocation.getState">
+    </div>
+    <div class="form-group">
+        Zipcode: <input class="form-control" placeholder="zip" name="zip" type="zip" value="@results.getLocation.getPostcode">
+    </div>
+
+    <div class="form-group">
+        Cell Number: <input class="form-control" placeholder="cell" name="cell" type="cell" value="@results.getCell">
+    </div>
+    <div class="form-group">
+        Email: <input class="form-control" placeholder="email" name="email" type="email" value="@results.getEmail">
+    </div>
+    }
+<form method="POST" action ="@routes.UserController.newUser()" id="newUser">
+    <button>Add User</button>
+</form>
+</body>
+</html>

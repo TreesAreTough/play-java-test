@@ -1,0 +1,59 @@
+@(currentLab:SecondSuperJoin, labList: List[Lab], doctorList: List[Doctor], patientList: List[Patient], labPulledList: List[Lab_Pulled])
+
+<!DOCTYPE html>
+<html lang=""en">
+<head>
+    <link rel="stylesheet" type ="text/css" href="@routes.Assets.at("stylesheets/actionPage.css")"/>
+    <meta charset=""UTF-8>
+    <title>Edit Lab</title>
+</head>
+<body>
+
+<form method="POST" action="@routes.LabManagerController.updateLab()">
+    <input type="hidden" name="labPulledId" value="@currentLab.labPulledId"/>
+    <fieldset>
+        <legend>Edit Lab</legend>
+        <div>
+            Select Lab:
+            <br>
+            <select name="labId">
+                <option selected value="@currentLab.labId">@currentLab.labName</option>
+                @for(labs <- labList){
+                @if(!currentLab.labId.equals(labs.labId)){
+                <option value=@labs.labId>@labs.labName</option>
+                }}
+            </select>
+        </div>
+            <div>
+                Enter Lab Value:
+                <br>
+                <input type="text" name="value" value="@currentLab.value"/>
+            </div>
+            <div>
+                Enter Lab Date:
+                <br>
+                <input type="date" name="labDate" value="@currentLab.dateTaken"/>
+            </div>
+
+        <div>
+            Select Lab:
+            <br>
+            <select name="doctorId">
+                <option selected value="@currentLab.doctorId">@currentLab.docName</option>
+                @for(doctors <- doctorList){
+                @if(!currentLab.doctorId.equals(doctors.doctorId)){
+                <option value=@doctors.doctorId>@doctors.docName</option>
+                }}
+            </select>
+        </div>
+
+
+
+
+
+
+        <button>Edit Lab</button>
+    </fieldset>
+</form>
+</body>
+</html>

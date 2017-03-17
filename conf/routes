@@ -1,0 +1,38 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.PersonController.index()
+POST    /person                     controllers.PersonController.addPerson()
+GET     /persons                    controllers.PersonController.getPersons
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#Bootstrap pages
+GET     /XML                        controllers.XMLController.getXML()
+GET     /blah                       controllers.BootstrapController.blah
+GET     /charts                     controllers.BootstrapController.charts()
+GET     /alerts                     controllers.BootstrapController.alerts
+GET     /createNewUser              controllers.UserController.newUser
+POST    /createNewUser              controllers.UserController.addUser()
+GET     /tables                     controllers.BootstrapController.getDoctor2()
+GET     /forms                      controllers.BootstrapController.forms
+GET     /indexFinal                 controllers.BootstrapController.indexFinal
+GET     /profile                    controllers.BootstrapController.profile
+GET     /index                      controllers.UserController.index()
+GET     /prescription               controllers.DatabaseController.getPrescription()
+
+#Daemon
+GET     /SuperJoin                  controllers.DatabaseController.getSuperJoin()
+GET     /daemonStart                controllers.DaemonController.start()
+
+#Test
+GET     /labManager                 controllers.LabManagerController.getLabManager()
+POST    /labManager                 controllers.LabManagerController.deleteLab(labPulledId:Long)
+GET     /newLab                     controllers.LabManagerController.newLab()
+POST    /newLab                     controllers.LabManagerController.addLab()
+GET     /editLab/:labPulledId       controllers.LabManagerController.editLab(labPulledId:Long)
+POST    /editLab                    controllers.LabManagerController.updateLab()
+

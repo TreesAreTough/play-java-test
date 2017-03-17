@@ -1,0 +1,19 @@
+@()
+
+@main("Welcome to Play") {
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
+
+    <ul id="persons"></ul>
+
+    <form method="POST" action="@routes.PersonController.addPerson()">
+        <input type="text" name="name"/>
+        <button>Add Person</button>
+        <iframe
+                width="600"
+                height="450"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQWa_oX8gO8zwdVCNc8UyJPx8GDDMA_Ic
+    &q=Banister+Lieblong+Clinic,Conway+AR" allowfullscreen>
+        </iframe>
+    </form>
+}

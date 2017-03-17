@@ -1,0 +1,45 @@
+@(labManagerList: List[LabManager])
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type ="text/css" href="@routes.Assets.at("stylesheets/main.css")"/>
+
+</head>
+<body>
+<h1>Lab Manager</h1>
+
+<table>
+    <tr>
+        <th>Lab Name</th>
+        <th>Lab Value</th>
+        <th>Lab Date</th>
+        <th>Doctor Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @for(labManagers <- labManagerList){
+    <tr>
+        <td>@labManagers.labName </td>
+        <td>@labManagers.value</td>
+        <td>@labManagers.dateTaken</td>
+        <td>@labManagers.docName</td>
+        <td>
+            <form method="GET" action="@routes.LabManagerController.editLab(labManagers.labPulledId)">
+                <button>Edit</button>
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="@routes.LabManagerController.deleteLab(labManagers.labPulledId)" >
+                <button>Delete</button>
+            </form>
+        </td>
+    </tr>
+    }
+</table>
+<br>
+<form method="GET" action="@routes.LabManagerController.newLab()">
+    <button>Add New Lab</button>
+</form>
+
+</body>
+</html>
